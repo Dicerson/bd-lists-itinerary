@@ -2,6 +2,7 @@ package com.amazon.ata.lists;
 
 import com.amazon.ata.resources.lists.prework.Destination;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -10,13 +11,14 @@ import java.util.List;
  * and get the total number of days that will be spent in trip.
  */
 public class Itinerary {
+    ArrayList<Destination> destinations = new ArrayList<Destination>();
     /**
      * Add a new destination to the end of itinerary.
      *
      * @param destination destination to add to itinerary
      */
     public void addDestination(Destination destination) {
-        // Implement the method here
+        destinations.add(destination);
     }
 
     /**
@@ -27,7 +29,7 @@ public class Itinerary {
      */
     public Destination getDestination(int position) {
         // Implement the method here
-        return null;
+        return destinations.get(position);
     }
 
     /**
@@ -38,7 +40,7 @@ public class Itinerary {
      */
     public Destination removeDestination(int position) {
         // Implement the method here
-        return null;
+        return destinations.remove(position);
     }
 
 
@@ -49,8 +51,11 @@ public class Itinerary {
      * @return full list of locations from itinerary.
      */
     public List<String> getListOfLocations() {
-        // Implement the method here
-        return null;
+        List<String> list = new ArrayList<String>();
+        for(int i = 0;i < destinations.size();i++){
+            list.add(destinations.get(i).getLocation());
+        }
+        return list;
     }
 
     /**
@@ -60,8 +65,11 @@ public class Itinerary {
      * @return total number of days spent in all locations.
      */
     public int getTotalNumberOfDays() {
-        // Implement the method here
-        return -1;
+        int total = 0;
+        for(int i = 0;i<destinations.size();i++){
+            total += destinations.get(i).getDaysAtLocation();
+        }
+        return total;
     }
 
     /**
@@ -70,7 +78,6 @@ public class Itinerary {
      * @return number of destinations contained in itinerary.
      */
     public int getNumberOfDestinations() {
-        // Implement the method here
-        return -1;
+        return destinations.size();
     }
 }
